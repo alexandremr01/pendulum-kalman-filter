@@ -9,10 +9,12 @@ hold on;
 plot(simulacao.theta.time, simulacao.theta.signals.values, 'b', 'LineWidth', 2);
 hold on;
 plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'LineWidth', 2);
+hold on;
+plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Theta (rad)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-legend('Referencia', 'Executado', 'Medido');
+legend('Referencia', 'Executado', 'Medido', 'Filtrado');
 grid on;
 salvarGrafico('theta', formato);
  
