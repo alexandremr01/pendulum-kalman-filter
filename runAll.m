@@ -1,7 +1,7 @@
-thetar = 2;
+thetar = 0;
 tf = 15;
-varCom = 0.00;
-varMed = 0.000;
+varCom = 1;
+varMed = 0.001;
 
-simulacao = simular(thetar, tf, varCom, varMed);
+simulacao = simular('pendulo_nao_linear', thetar, tf, varCom, varMed);
 desenharGraficos(simulacao);

@@ -1,4 +1,4 @@
-function simulacao = simular(thetar, tf, varCom, varMed)
+function simulacao = simular(sistema, thetar, tf, varCom, varMed)
 
 planta = obterPlanta();
 requisitos = obterRequisitos();
@@ -10,7 +10,7 @@ assignin('base', 'planta', planta);
 assignin('base', 'varMed', varMed);
 assignin('base', 'varCom', varCom);
  
-sistema = 'pendulo_kalman';
+% sistema = 'pendulo_nao_linear';
 load_system(sistema);
 set_param(sistema, 'StopTime', sprintf('%g', tf));
 simulacao = sim(sistema);
