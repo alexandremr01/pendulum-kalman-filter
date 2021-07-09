@@ -1,7 +1,7 @@
-thetar = pi/2;
-tf = 100;
-varCom = 0.01;
-varMed = 0.001;
+thetar = 1;
+tf = 5;
+varCom = 0.00;
+varMed = 0.000;
 
 simulacao = simular(thetar, tf, varCom, varMed);
 desenharGraficos(simulacao);
