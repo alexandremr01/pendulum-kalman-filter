@@ -10,8 +10,9 @@ assignin('base', 'planta', planta);
 assignin('base', 'varMed', varMed);
 assignin('base', 'varCom', varCom);
  
-load_system('pendulo');
-set_param('pendulo', 'StopTime', sprintf('%g', tf));
-simulacao = sim('pendulo');
+sistema = 'pendulo_kalman';
+load_system(sistema);
+set_param(sistema, 'StopTime', sprintf('%g', tf));
+simulacao = sim(sistema);
 
 end
