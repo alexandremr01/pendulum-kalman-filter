@@ -7,20 +7,25 @@ figure;
 plot(simulacao.thetar.time, simulacao.thetar.signals.values, 'r', 'LineWidth', 2);
 hold on;
 plot(simulacao.theta.time, simulacao.theta.signals.values, 'b', 'LineWidth', 2);
+hold on;
+plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Theta (rad)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-legend('Referencia', 'Executado');
+legend('Referencia', 'Executado', 'Medido');
 grid on;
 salvarGrafico('theta', formato);
  
 figure;
-plot(simulacao.a.time, simulacao.a.signals.values, 'LineWidth', 2);
+plot(simulacao.acom.time, simulacao.acom.signals.values, 'r', 'LineWidth', 2);
+hold on;
+plot(simulacao.a.time, simulacao.a.signals.values, 'b', 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Aceleração (m/s^2)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
+legend('Comandada', 'Executada');
 grid on;
-salvarGrafico(sprintf('comando'), formato);
+salvarGrafico('comando', formato);
 
 end
 
