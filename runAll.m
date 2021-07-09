@@ -1,5 +1,5 @@
-thetar = 1;
-tf = 5;
+thetar = 2;
+tf = 15;
 varCom = 0.00;
 varMed = 0.000;
 
