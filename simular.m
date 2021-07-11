@@ -1,8 +1,10 @@
-function simulacao = simular(sistema, controlador, planta, thetar, tf, varCom, varMed)
+function simulacao = simular(sistema, model, controlador, planta, thetar, tf, varCom, varMed)
 
 assignin('base', 'thetar', thetar);
 assignin('base', 'controlador', controlador);
 assignin('base', 'planta', planta);    
+assignin('base', 'model', model);    
+
 assignin('base', 'varMed', varMed);
 assignin('base', 'varCom', varCom);
  
