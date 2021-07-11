@@ -6,12 +6,12 @@ formato = 'png';
 figure;
 plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'LineWidth', 2);
 hold on;
-plot(simulacao.thetar.time, simulacao.thetar.signals.values, 'r', 'LineWidth', 2);
+plot(simulacao.thetar.time, simulacao.thetar.signals.values, 'LineWidth', 2);
 hold on;
 plot(simulacao.theta.time, simulacao.theta.signals.values, 'b', 'LineWidth', 2);
 hold on;
 
-plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'LineWidth', 2);
+plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'r', 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Theta (rad)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
@@ -32,18 +32,15 @@ salvarGrafico('comando', formato);
 
 figure;
 v = [0; diff(simulacao.thetam.signals.values)];
-% plot(simulacao.v.time, v, 'LineWidth', 2);
-% hold on;
-% hold on;
-plot(simulacao.vm.time, simulacao.vm.signals.values, 'LineWidth', 2);
-hold on;
+plot(simulacao.v.time, v, 'LineWidth', 2);
+hold on
 plot(simulacao.vf.time, simulacao.vf.signals.values, 'r', 'LineWidth', 2);
 hold on;
 plot(simulacao.v.time, simulacao.v.signals.values, 'b', 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Velocidade (m/s)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-legend('Medida', 'Filtrada', 'Executada');
+legend('Numérica', 'Filtrada', 'Executada');
 grid on;
 salvarGrafico('comando', formato);
 
