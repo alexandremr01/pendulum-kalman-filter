@@ -1,21 +1,19 @@
-function desenharGraficos(simulacao)
+function desenharGraficosSemKalman(simulacao)
 
 formato = 'png'; 
 % formato = 'eps';
 
 figure;
-plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'LineWidth', 2);
+plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'k', 'LineWidth', 2);
 hold on;
 plot(simulacao.thetar.time, simulacao.thetar.signals.values, 'r', 'LineWidth', 2);
 hold on;
 plot(simulacao.theta.time, simulacao.theta.signals.values, 'b', 'LineWidth', 2);
 hold on;
-
-plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Theta (rad)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-legend('Medido','Referencia', 'Executado', 'Filtrado');
+legend('Medido', 'Referencia', 'Executado');
 grid on;
 salvarGrafico('theta', formato);
  
@@ -35,15 +33,13 @@ v = [0; diff(simulacao.thetam.signals.values)];
 % plot(simulacao.v.time, v, 'LineWidth', 2);
 % hold on;
 % hold on;
-plot(simulacao.vm.time, simulacao.vm.signals.values, 'LineWidth', 2);
-hold on;
-plot(simulacao.vf.time, simulacao.vf.signals.values, 'r', 'LineWidth', 2);
+plot(simulacao.vm.time, simulacao.vm.signals.values, 'r', 'LineWidth', 2);
 hold on;
 plot(simulacao.v.time, simulacao.v.signals.values, 'b', 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Velocidade (m/s)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-legend('Medida', 'Filtrada', 'Executada');
+legend('Medida', 'Executada');
 grid on;
 salvarGrafico('comando', formato);
 

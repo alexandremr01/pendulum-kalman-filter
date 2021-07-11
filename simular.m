@@ -1,8 +1,4 @@
-function simulacao = simular(sistema, thetar, tf, varCom, varMed)
-
-planta = obterPlanta();
-requisitos = obterRequisitos();
-controlador = projetarControlador(requisitos, planta);
+function simulacao = simular(sistema, controlador, planta, thetar, tf, varCom, varMed)
 
 assignin('base', 'thetar', thetar);
 assignin('base', 'controlador', controlador);

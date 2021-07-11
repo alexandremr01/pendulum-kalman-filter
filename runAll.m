@@ -1,7 +1,11 @@
 thetar = 0;
-tf = 15;
-varCom = 1;
+tf = 100;
+varCom = 0.01;
 varMed = 0.001;
 
-simulacao = simular('pendulo_nao_linear', thetar, tf, varCom, varMed);
+planta = obterPlanta();
+requisitos = obterRequisitos();
+controlador = projetarControladorPV(requisitos, planta);
+
+simulacao = simular('pendulo_pv', controlador, planta, thetar, tf, varCom, varMed);
 desenharGraficos(simulacao);
