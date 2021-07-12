@@ -10,9 +10,9 @@ assignin('base', 'varCom', varCom);
  
 
 if filter
-    sistema = 'pendulum_with_filter';
+    sistema = 'pendulo_filtro';
 else
-    sistema = 'pendulum_without_filter';
+    sistema = 'pendulo_sem_filtro';
 end
 
 load_system(sistema);
