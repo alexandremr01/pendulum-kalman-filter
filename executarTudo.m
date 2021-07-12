@@ -10,5 +10,3 @@ model = obterParametros(planta, varianciaComando, varianciaMedida);
 
 sim_with_filter = simular(true, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
 sim_without_filter = simular(false, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
-
-
