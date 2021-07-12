@@ -1,10 +1,11 @@
-function desenharGraficos(simulacao, filter)
+function desenharGraficos(simulacao, filtroAtivado)
+% Plota uma sequencia de graficos com/sem filtro
 
 formato = 'png'; 
 % formato = 'eps';
 
-if filter
-    suffix = '_filter';
+if filtroAtivado
+    suffix = '_filtro';
 else
     suffix = '';
 end
@@ -16,13 +17,13 @@ plot(simulacao.thetar.time, simulacao.thetar.signals.values, 'LineWidth', 2);
 hold on;
 plot(simulacao.theta.time, simulacao.theta.signals.values, 'LineWidth', 2);
 hold on;
-if filter
+if filtroAtivado
     plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'LineWidth', 2);
 end
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Theta (rad)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-if filter
+if filtroAtivado
     legend('Medido','Referencia', 'Executado', 'Filtrado');
 else 
     legend('Medido','Referencia', 'Executado');
@@ -47,13 +48,13 @@ plot(simulacao.v.time, v_numeric, 'k', 'LineWidth', 2);
 hold on;
 plot(simulacao.v.time, simulacao.v.signals.values, 'LineWidth', 2);
 hold on;
-if filter
+if filtroAtivado
     plot(simulacao.vf.time, simulacao.vf.signals.values, 'LineWidth', 2);  
 end
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Velocidade (m/s)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-if filter
+if filtroAtivado
     legend('Numérica', 'Executada', 'Filtrada');
 else 
     legend('Numérica', 'Executada');

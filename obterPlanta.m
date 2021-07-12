@@ -1,4 +1,8 @@
 function planta = obterPlanta()
+% Carrega os parametros da dinamica do sistema
+% planta.m : massa do pendulo
+% planta.l : comprimento do fio
+% planta.g : aceleração da gravidade
 
 planta.m = 1;
 planta.l = 0.5;
