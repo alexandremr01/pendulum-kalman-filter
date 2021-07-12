@@ -1,6 +1,6 @@
 thetar = 0;
 tf = 10;
-varianciaComando = 1;
+varianciaComando = 10;
 varianciaMedida = 0.5;
 
 planta = obterPlanta();

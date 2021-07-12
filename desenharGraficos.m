@@ -1,8 +1,8 @@
 function desenharGraficos(simulacao, filtroAtivado)
 % Plota uma sequencia de graficos com/sem filtro
 
-formato = 'png'; 
-% formato = 'eps';
+% formato = 'png'; 
+formato = 'eps';
 
 if filtroAtivado
     suffix = '_filtro';
@@ -45,14 +45,11 @@ grid on;
 salvarGrafico(sprintf('command%s', suffix), formato);
 
 figure;
-v_numeric = [0; diff(simulacao.thetam.signals.values)];
 if filtroAtivado
-    plot(simulacao.v.time, v_numeric, 'Color', '#90EE90', 'LineWidth', 2);
-    hold on;
     plot(simulacao.v.time, simulacao.v.signals.values, 'r', 'LineWidth', 2);
     hold on;
     plot(simulacao.vf.time, simulacao.vf.signals.values, 'Color', '#FF8C00', 'LineWidth', 2); 
-    legend('Numérica', 'Executada', 'Filtrada');
+    legend('Executada', 'Filtrada');
 else
     plot(simulacao.v.time, simulacao.v.signals.values, 'r', 'LineWidth', 2);
     hold on;

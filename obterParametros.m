@@ -16,4 +16,5 @@ model.F = expm(A*T);
 model.G = integral(@(t)expm(A*t)*B, 0, T, 'ArrayValued',true);
 model.Q = model.G * varCom * model.G';
 model.R = varMed;
+model.T = T;
 end
