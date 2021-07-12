@@ -11,30 +11,32 @@ else
 end
 
 figure;
-plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'LineWidth', 2);
+plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'Color', '#90EE90', 'LineWidth', 2);
 hold on;
-plot(simulacao.thetar.time, simulacao.thetar.signals.values, 'LineWidth', 2);
 hold on;
-plot(simulacao.theta.time, simulacao.theta.signals.values, 'LineWidth', 2);
+plot(simulacao.theta.time, simulacao.theta.signals.values,  'r', 'LineWidth', 2);
 hold on;
 if filtroAtivado
-    plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'LineWidth', 2);
+    plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'Color', '#FF8C00', 'LineWidth', 2);
+    hold on;
 end
+plot(simulacao.thetar.time, simulacao.thetar.signals.values,  'b', 'LineWidth', 2);
+
 xlabel('Tempo (s)', 'FontSize', 14);
-ylabel('Theta (rad)', 'FontSize', 14);
+ylabel('\theta (rad)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
 if filtroAtivado
-    legend('Medido','Referencia', 'Executado', 'Filtrado');
+    legend('Medido', 'Executado', 'Filtrado', 'Referencia');
 else 
-    legend('Medido','Referencia', 'Executado');
+    legend('Medido', 'Executado', 'Referencia');
 end
 grid on;
 salvarGrafico(sprintf('theta%s', suffix), formato);
  
 figure;
-plot(simulacao.acom.time, simulacao.acom.signals.values, 'LineWidth', 2);
+plot(simulacao.acom.time, simulacao.acom.signals.values, 'Color', '#90EE90', 'LineWidth', 2);
 hold on;
-plot(simulacao.a.time, simulacao.a.signals.values,'LineWidth', 2);
+plot(simulacao.a.time, simulacao.a.signals.values, 'r', 'LineWidth', 2);
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('Aceleração (m/s^2)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
@@ -44,21 +46,21 @@ salvarGrafico(sprintf('command%s', suffix), formato);
 
 figure;
 v_numeric = [0; diff(simulacao.thetam.signals.values)];
-plot(simulacao.v.time, v_numeric, 'k', 'LineWidth', 2);
-hold on;
-plot(simulacao.v.time, simulacao.v.signals.values, 'LineWidth', 2);
-hold on;
 if filtroAtivado
-    plot(simulacao.vf.time, simulacao.vf.signals.values, 'LineWidth', 2);  
+    plot(simulacao.v.time, v_numeric, 'Color', '#90EE90', 'LineWidth', 2);
+    hold on;
+    plot(simulacao.v.time, simulacao.v.signals.values, 'r', 'LineWidth', 2);
+    hold on;
+    plot(simulacao.vf.time, simulacao.vf.signals.values, 'Color', '#FF8C00', 'LineWidth', 2); 
+    legend('Numérica', 'Executada', 'Filtrada');
+else
+    plot(simulacao.v.time, simulacao.v.signals.values, 'r', 'LineWidth', 2);
+    hold on;
+    legend('Executada');
 end
 xlabel('Tempo (s)', 'FontSize', 14);
-ylabel('Velocidade (m/s)', 'FontSize', 14);
+ylabel('Velocidade Angular (rad/s)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-if filtroAtivado
-    legend('Numérica', 'Executada', 'Filtrada');
-else 
-    legend('Numérica', 'Executada');
-end
 grid on;
 salvarGrafico(sprintf('speed%s', suffix), formato);
 

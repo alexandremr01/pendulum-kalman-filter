@@ -1,12 +1,14 @@
-thetar = 0.1;
+thetar = 0;
 tf = 10;
-varCom = 0.1;
-varMed = 0.1;
+varianciaComando = 1;
+varianciaMedida = 0.5;
 
 planta = obterPlanta();
 requisitos = obterRequisitos();
 controlador = projetarControlador(requisitos, planta);
-model = obterParametros(planta, varCom, varMed);
+model = obterParametros(planta, varianciaComando, varianciaMedida);
 
-sim_with_filter = simular(true, model, controlador, planta, thetar, tf, varCom, varMed);
-sim_without_filter = simular(false, model, controlador, planta, thetar, tf, varCom, varMed);
+sim_with_filter = simular(true, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
+sim_without_filter = simular(false, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
+
+
