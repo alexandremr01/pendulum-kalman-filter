@@ -1,4 +1,4 @@
-function simulacao = simular(sistema, model, controlador, planta, thetar, tf, varCom, varMed)
+function simulacao = simular(filter, model, controlador, planta, thetar, tf, varCom, varMed)
 
 assignin('base', 'thetar', thetar);
 assignin('base', 'controlador', controlador);
@@ -8,9 +8,16 @@ assignin('base', 'model', model);
 assignin('base', 'varMed', varMed);
 assignin('base', 'varCom', varCom);
  
-% sistema = 'pendulo_nao_linear';
+
+if filter
+    sistema = 'pendulum_with_filter';
+else
+    sistema = 'pendulum_without_filter';
+end
+
 load_system(sistema);
 set_param(sistema, 'StopTime', sprintf('%g', tf));
 simulacao = sim(sistema);
+desenharGraficos(simulacao, filter);
 
 end
