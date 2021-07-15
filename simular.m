@@ -1,4 +1,4 @@
-function simulacao = simular(filter, model, controlador, planta, thetar, tf, varCom, varMed)
+function simulacao = simular(filtroAtivado, model, controlador, planta, thetar, tf, varCom, varMed)
 
 assignin('base', 'thetar', thetar);
 assignin('base', 'controlador', controlador);
@@ -9,7 +9,7 @@ assignin('base', 'varMed', varMed);
 assignin('base', 'varCom', varCom);
  
 
-if filter
+if filtroAtivado
     sistema = 'pendulo_filtro';
 else
     sistema = 'pendulo_sem_filtro';
@@ -18,6 +18,6 @@ end
 load_system(sistema);
 set_param(sistema, 'StopTime', sprintf('%g', tf));
 simulacao = sim(sistema);
-desenharGraficos(simulacao, filter);
+simulacao.filtroAtivado = filtroAtivado;
 
 end

@@ -1,31 +1,25 @@
-function desenharGraficos(simulacao, filtroAtivado)
+function desenharGraficos(simulacao, formato)
 % Plota uma sequencia de graficos com/sem filtro
 
-% formato = 'png'; 
-formato = 'eps';
-
-if filtroAtivado
+if simulacao.filtroAtivado
     suffix = '_filtro';
 else
-    suffix = '';
+    suffix = '_sem_filtro';
 end
 
 figure;
+hold on;
 plot(simulacao.thetam.time, simulacao.thetam.signals.values, 'Color', '#90EE90', 'LineWidth', 2);
-hold on;
-hold on;
 plot(simulacao.theta.time, simulacao.theta.signals.values,  'r', 'LineWidth', 2);
-hold on;
-if filtroAtivado
+if simulacao.filtroAtivado
     plot(simulacao.thetaf.time, simulacao.thetaf.signals.values, 'Color', '#FF8C00', 'LineWidth', 2);
-    hold on;
 end
 plot(simulacao.thetar.time, simulacao.thetar.signals.values,  'b', 'LineWidth', 2);
 
 xlabel('Tempo (s)', 'FontSize', 14);
 ylabel('\theta (rad)', 'FontSize', 14);
 set(gca, 'FontSize', 14);
-if filtroAtivado
+if simulacao.filtroAtivado
     legend('Medido', 'Executado', 'Filtrado', 'Referencia');
 else 
     legend('Medido', 'Executado', 'Referencia');
@@ -45,14 +39,13 @@ grid on;
 salvarGrafico(sprintf('command%s', suffix), formato);
 
 figure;
-if filtroAtivado
+hold on;
+if simulacao.filtroAtivado
     plot(simulacao.v.time, simulacao.v.signals.values, 'r', 'LineWidth', 2);
-    hold on;
     plot(simulacao.vf.time, simulacao.vf.signals.values, 'Color', '#FF8C00', 'LineWidth', 2); 
     legend('Executada', 'Filtrada');
 else
     plot(simulacao.v.time, simulacao.v.signals.values, 'r', 'LineWidth', 2);
-    hold on;
     legend('Executada');
 end
 xlabel('Tempo (s)', 'FontSize', 14);
