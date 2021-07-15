@@ -1,6 +1,6 @@
 # Controle do Pêndulo Invertido com Ruído de Medida e de Comando
 
-Para ver o resulto do trabalho basta rodar o script executarTudo.m
+Para ver o resultado do trabalho basta rodar o script executarTudo.m
 
 ## Scripts
 
