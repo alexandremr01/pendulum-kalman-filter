@@ -11,14 +11,21 @@ requisitos = obterRequisitos();
 controlador = projetarControlador(requisitos, planta);
 model = obterParametros(planta, varianciaComando, varianciaMedida);
 
-sim_com_filtro = simular(true, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
-sim_sem_filtro = simular(false, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
+simulacao_com_filtro = simular(true, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
+simulacao_sem_filtro = simular(false, model, controlador, planta, thetar, tf, varianciaComando, varianciaMedida);
 
 % Escolha o formato dos gráficos; 
 formato = 'eps';
 
-desenharGraficos(sim_com_filtro, formato);
-desenharGraficos(sim_sem_filtro, formato);
+desenharGraficos(simulacao_com_filtro, formato);
+desenharGraficos(simulacao_sem_filtro, formato);
 
-gerarAnimacao(sim_com_filtro, planta, thetar);
-gerarAnimacao(sim_sem_filtro, planta, thetar);
+gerarAnimacao(simulacao_com_filtro, planta, thetar);
+gerarAnimacao(simulacao_sem_filtro, planta, thetar);
+
+meio = floor(length(simulacao_sem_filtro.theta.signals.values) / 2);
+media_sem_filtro = mean(simulacao_sem_filtro.theta.signals.values(meio:end, 1));
+desv_sem_filtro = std(simulacao_sem_filtro.theta.signals.values(meio:end, 1));
+
+media_com_filtro = mean(simulacao_com_filtro.theta.signals.values(meio:end, 1));
+desv_com_filtro = std(simulacao_com_filtro.theta.signals.values(meio:end, 1));
